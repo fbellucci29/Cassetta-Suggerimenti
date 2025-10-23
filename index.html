@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Miei Suggerimenti - Smart Working</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a3d66;
+            color: #f5faff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: rgba(245, 250, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(245, 250, 255, 0.1);
+            animation: fadeIn 0.8s ease;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #f5faff;
+        }
+
+        .header .icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 20px;
+            font-size: 1.1em;
+            background: rgba(245, 250, 255, 0.1);
+            border: 2px solid rgba(245, 250, 255, 0.2);
+            border-radius: 15px;
+            color: #f5faff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            resize: vertical;
+            transition: all 0.3s ease;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(245, 250, 255, 0.5);
+            background: rgba(245, 250, 255, 0.15);
+        }
+
+        .form-group textarea::placeholder {
+            color: rgba(245, 250, 255, 0.5);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-print {
+            background: linear-gradient(45deg, #4facfe, #00f2fe);
+            color: #0a3d66;
+        }
+
+        .btn-print:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(79, 172, 254, 0.4);
+        }
+
+        .btn-print:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-back {
+            background: rgba(245, 250, 255, 0.2);
+            color: #f5faff;
+            border: 2px solid rgba(245, 250, 255, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            background: rgba(245, 250, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .info-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(245, 250, 255, 0.08);
+            border-radius: 15px;
+            border-left: 4px solid #4facfe;
+        }
+
+        .info-box p {
+            font-size: 0.95em;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .container {
+                box-shadow: none;
+                border: 2px solid #0a3d66;
+                background: white;
+            }
+
+            .btn-group,
+            .info-box,
+            .btn-back {
+                display: none !important;
+            }
+
+            .header h1 {
+                color: #0a3d66;
+            }
+
+            .form-group textarea {
+                border: 2px solid #0a3d66;
+                background: white;
+                color: black;
+                min-height: 300px;
+            }
+
+            .print-only {
+                display: block !important;
+                margin-top: 40px;
+                padding-top: 20px;
+                border-top: 2px dashed #0a3d66;
+                text-align: center;
+                color: #0a3d66;
+                font-size: 0.9em;
+            }
+        }
+
+        .print-only {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .header .icon {
+                font-size: 3em;
+            }
+
+            .btn {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="icon">💡</span>
+            <h1>I Miei Suggerimenti</h1>
+            <p>Scrivi il tuo suggerimento per migliorare lo smart working e stampalo per inserirlo nella cassetta dei suggerimenti!</p>
+        </div>
+
+        <form id="suggestionForm">
+            <div class="form-group">
+                <label for="suggestion">✍️ Il tuo suggerimento:</label>
+                <textarea 
+                    id="suggestion" 
+                    name="suggestion" 
+                    placeholder="Scrivi qui il tuo suggerimento per rendere lo smart working più efficace, sicuro e piacevole..."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-print" id="btnPrint" disabled>
+                    🖨️ Stampa Suggerimento
+                </button>
+                <a href="#" class="btn btn-back" id="btnBack">
+                    ← Torna alla Home
+                </a>
+            </div>
+        </form>
+
+        <div class="info-box">
+            <p>💡 <strong>Suggerimento:</strong> Dopo aver scritto il tuo suggerimento, clicca su "Stampa" per stamparlo su carta. Ritaglialo e inseriscilo nella cassetta dei suggerimenti fisica!</p>
+        </div>
+
+        <div class="print-only">
+            <p>✂️ Ritaglia lungo questa linea e inserisci nella cassetta dei suggerimenti</p>
+            <p style="margin-top: 10px; font-size: 0.8em;">Smart Working - EU-OSHA European Week for Safety and Health at Work</p>
+        </div>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('suggestion');
+        const btnPrint = document.getElementById('btnPrint');
+        const btnBack = document.getElementById('btnBack');
+
+        // Abilita il pulsante stampa solo se c'è testo
+        textarea.addEventListener('input', function() {
+            if (this.value.trim().length > 0) {
+                btnPrint.disabled = false;
+            } else {
+                btnPrint.disabled = true;
+            }
+        });
+
+        // Funzione stampa
+        btnPrint.addEventListener('click', function() {
+            if (textarea.value.trim().length > 0) {
+                // Rende la textarea read-only temporaneamente per la stampa
+                textarea.setAttribute('readonly', 'readonly');
+                
+                // Apre la finestra di stampa
+                window.print();
+                
+                // Rimuove readonly dopo la stampa
+                setTimeout(function() {
+                    textarea.removeAttribute('readonly');
+                }, 1000);
+            }
+        });
+
+        // Pulsante Back
+        btnBack.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Link alla landing page - da inserire');
+            // window.location.href = 'index.html'; // Sostituisci con il link alla landing page
+        });
+
+        // Previeni l'invio del form
+        document.getElementById('suggestionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
